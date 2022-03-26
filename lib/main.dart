@@ -4,6 +4,13 @@ void main(){
 
   runApp(MaterialApp(
       title: "Frases do dia",
-      home:  Container(color: Colors.white),
+      
+      home:  Row(children:  const <Widget> [
+      Text("Row1 "),
+        Text(" Row2 ")
+    //home:  Column(children:  const <Widget> [
+    // Text("Column"),
+    // Text("Column2")
+      ],)
       ));
 }
