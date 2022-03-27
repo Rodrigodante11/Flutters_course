@@ -11,16 +11,15 @@ void main(){
             decoration: BoxDecoration(
               border: Border.all(width: 3, color:Colors.white)
             ),
-
-            child:Row (
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center, //
-              children: const <Widget>[
-                Text("T11"),
-                Text("T2"),
-                Text("T3"),
-              ],
-            )
+            child: Image.asset(
+              "images/mesa.jpg",
+                  // fit: BoxFit.cover,// Cobre toda area disponivel
+                  // fit: BoxFit.contain,// para exibir a imagem inteira independente do espaco
+                  // fit: BoxFit.fill, // coloca a imagem toda no espacaTodo
+                  // fit: BoxFit.fitHeight // garante que a altura seja preenchida perdendo partes laterais da imagens
+                  // fit: BoxFit.none // exibe a imagem no seu tamanho original podendo perder partes da imagem
+                  fit: BoxFit.scaleDown //parecido com contains mas garante que a imagem caiba na horizontal sem distorcao
+            ) ,
         ),
 
       ));
