@@ -1,96 +1,65 @@
-import 'package:flutter/cupertino.dart';
-import  'package:flutter/material.dart';
-/*
-  Stateless -> Widgets que nao podem ser laterados(Constantes)
-  Stateful -> Widgets que podem ser alterados
- */
+import 'package:flutter/material.dart';
 
 void main(){
-
   runApp(MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Frases do dia",
-        home: HomeStateful() // chamando a classe home
-      ));
+    home: Home(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
-// so coloca stless/stful que uma classe base eh criada
-class HomeStateful extends StatefulWidget { // essa classe chama a classe de build na build q se faz as modificacoes
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  _HomeStatefulState createState() => _HomeStatefulState(); //createState() criar um estado
-  // _HomeStatefulState createState() { igual o do cima
-  //   return _HomeStatefulState();
-  // };
+  State<Home> createState() => _HomeState();
 }
 
-class _HomeStatefulState extends State<HomeStateful> {
-  var _varText = "Rodrigo Augusto";
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-
-
-    return Scaffold( // joguei o Scaffold todo no return
+    return Scaffold(
       appBar: AppBar(
-        title: Text( "Cabecalho do Programa" ),
+        title: Text("Frases do Dia"),
         backgroundColor: Colors.green,
-        centerTitle: true ,
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: (){
-                // _varText = "Mundando apos clicar "; // nao funciona assim precisa do set()
-                setState(() {
-                  _varText = "Mundando apos clicar "; // alterando a variavel _varText
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                 primary: Colors.purple,
-              ),
-              child: Text("Clique aqui"),
-            ),
-            Text("Nome: $_varText")
-          ],
-        )
+      body: Center( //Center para centralizar o child: container abaixo
+        child: Container(
+            padding: EdgeInsets.all(16),
+            // width: double.infinity, // para o container pega todo o espaco do app
+            // decoration: BoxDecoration(
+            //     border: Border.all(width: 3,color: Colors.amber)
+            // ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget> [
+                Image.asset("images/logo.png"),
+                Text(
+                    "Clique abaixo para gerar uma frase",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black
+                    )
+                ),
+                ElevatedButton(
+                  onPressed: (){},
+                  child: Text(
+                    "Nova Frase",
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                  ),
+                )
+              ],
+            )
+        ),
       )
-
     );
   }
 }
-
-
-// class  HomeStateless extends StatelessWidget {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//
-//     var _titulo = "Cabecalho do Programa";
-//
-//     return Scaffold( // joguei o Scaffold todo no return
-//       appBar: AppBar(
-//         title: Text( _titulo ),
-//         backgroundColor: Colors.green,
-//         centerTitle: true ,
-//
-//       ),
-//
-//       body: const Padding(
-//           padding: EdgeInsets.all(30),
-//           child: Text("Conteudo do Body HomeStateless")
-//       ),
-//       bottomNavigationBar: BottomAppBar(
-//           color: Colors.lightGreen,
-//           child: Padding(
-//               padding: EdgeInsets.all(16),
-//               child: Row(
-//                 children: const <Widget> [
-//                   Text("Texto11"),
-//                   Text("Texto2")
-//                 ],
-//               )
-//           )
-//       ),
-//     );
-//   }
-// }
