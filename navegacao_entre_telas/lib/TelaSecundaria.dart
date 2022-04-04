@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 
 class TelaSecundaria extends StatefulWidget {
 
-  String nome;
-
-  TelaSecundaria({required this.nome}) ;
 
   @override
   State<TelaSecundaria> createState() => _TelaSecundariaState();
@@ -23,10 +20,21 @@ class _TelaSecundariaState extends State<TelaSecundaria> {
           padding: EdgeInsets.all(35),
           child: Column(
             children: <Widget>[
-              Text("Secundaria Tela! valor passado: ${widget.nome}"),
+              Text("Secundaria Tela! "),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.pushNamed(context, "/");
+                  },
+                  child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: Text('Ir para tela Principal ')),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                  )
+              ),
             ],
           ),
         )
-    );;
+    );
   }
 }

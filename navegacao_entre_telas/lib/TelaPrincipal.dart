@@ -23,12 +23,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           children: <Widget>[
             ElevatedButton(
                 onPressed: (){
-                  Navigator.push(
-                      context,  // BuildContext context da build linha 13
-                      MaterialPageRoute(
-                          builder: (context) => TelaSecundaria( nome: 'Rodrigo',)
-                      )
-                  );
+                   Navigator.pushNamed(context, "/secundaria");
                 },
                 child: Padding(
                     padding: EdgeInsets.all(15),
@@ -36,7 +31,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                 )
-
             ),
           ],
         ),
