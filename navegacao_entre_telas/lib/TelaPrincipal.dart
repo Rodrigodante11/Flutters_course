@@ -23,7 +23,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           children: <Widget>[
             ElevatedButton(
                 onPressed: (){
-                   Navigator.pushNamed(context, "/secundaria");
+                  Navigator.push(
+                      context,  // BuildContext context da build linha 13
+                      MaterialPageRoute(
+                          builder: (context) => TelaSecundaria( nome: 'Rodrigo',)
+                      )
+                  );
                 },
                 child: Padding(
                     padding: EdgeInsets.all(15),
