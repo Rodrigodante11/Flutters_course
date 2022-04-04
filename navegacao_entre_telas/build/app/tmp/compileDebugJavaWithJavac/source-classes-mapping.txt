@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/navegacao_entre_telas/BuildConfig.java
+ com.example.navegacao_entre_telas.BuildConfig

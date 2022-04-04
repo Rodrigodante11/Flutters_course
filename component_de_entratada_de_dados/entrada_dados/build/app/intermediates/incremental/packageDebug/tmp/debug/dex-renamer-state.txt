@@ -1,0 +1,4 @@
+#Sun Apr 03 21:14:15 BRT 2022
+base.0=C\:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\component_de_entratada_de_dados\\entrada_dados\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
