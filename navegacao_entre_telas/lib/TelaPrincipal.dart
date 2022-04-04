@@ -26,7 +26,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   Navigator.push(
                       context,  // BuildContext context da build linha 13
                       MaterialPageRoute(
-                          builder: (context) => TelaSecundaria()
+                          builder: (context) => TelaSecundaria( nome: 'Rodrigo',)
                       )
                   );
                 },
