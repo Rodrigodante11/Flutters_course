@@ -28,7 +28,8 @@ class _HomeState extends State<Home> {
     return postagens;
   }
 
-  _post() async {
+  _post() async { // adiciona dados dentro de uma API
+
 
     http.Response response = await http.post(
         _urlBase + "/posts",
@@ -44,15 +45,52 @@ class _HomeState extends State<Home> {
     );
     print("resposta: ${response.statusCode}");
     print("resposta: ${response.body}");
-  }
-  _put(){
 
   }
-  _patch(){
+  _put() async { // Atualiza dados dentro de uma API (atualizaTudo)
+    http.Response response = await http.put(
+        _urlBase + "/posts/2", // id=2
+
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+          "id": null,
+          "title": "titulo alterado",
+          "body": "corpo da postagem alterada",
+          "userId": 120,
+        })
+    );
+    print("resposta: ${response.statusCode}");
+    print("resposta: ${response.body}");
 
   }
-  _delete(){
+  _patch() async { //patch atualiza parte
+    http.Response response = await http.put(
+        _urlBase + "/posts/2", // id=2
 
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+          "body": "corpo da postagem alterada com patch",
+        })
+    );
+    print("resposta: ${response.statusCode}");
+    print("resposta: ${response.body}");
+  }
+  _delete() async{
+    http.Response response = await http.delete(
+        _urlBase + "/posts/2" // deletar id=2
+    );
+    // if( response.statusCode == 200) { // status ok
+    //   //sucesso
+    // }else{
+    //   //avise algo
+    // }
+
+    print("resposta: ${response.statusCode}");
+    print("resposta: ${response.body}");
   }
   @override
   Widget build(BuildContext context) {
@@ -71,11 +109,12 @@ class _HomeState extends State<Home> {
                   child: Text("Salvar"),
                 ),
                 ElevatedButton(
-                  onPressed: _post,
-                  child: Text("Atualizar"),
+                  onPressed: _patch,
+                  child: Text("Atualizar "),
                 ),
+
                 ElevatedButton(
-                  onPressed: _post,
+                  onPressed: _delete,
                   child: Text("Remover"),
                 )
               ],
