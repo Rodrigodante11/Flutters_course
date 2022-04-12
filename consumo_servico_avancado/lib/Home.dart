@@ -1,4 +1,5 @@
 
+import 'package:consumo_servico_avancado/Post.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -13,39 +14,62 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  Future<Map> _recuperarPreco() async{
-    String url = "https://blockchain.info/ticker";
-    http.Response response= await http.get(url);
-    return json.decode(response.body);
+  String _urlBase = "https://jsonplaceholder.typicode.com";
+
+  Future<List<Post>> _recuperarPostagem() async{
+    http.Response response = await http.get(_urlBase + "/posts");
+    var dadosJson = json.decode(response.body) ;
+    List<Post> postagens = [];
+
+    for( var post in dadosJson ){
+      Post p = Post(post["userId"], post["id"] ,post["title"], post["body"]);
+      postagens.add(p);
+    }
+    return postagens;
   }
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Map> ( //future = recuperar dados futuros levando um tempinho
-        future: _recuperarPreco(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Consumo de servico avancado"),
+      ),
+      body: FutureBuilder<List<Post>> ( //future = recuperar dados futuros levando um tempinho
+        future: _recuperarPostagem(),
         builder: (context, snapshot){
-          String resultado="";
 
           switch(snapshot.connectionState){
             case ConnectionState.none:
-              break;
-            case ConnectionState.waiting:
-              resultado = "Carregando...";
-              break;
             case ConnectionState.active:
-              break;
+
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+
             case ConnectionState.done:
               if( snapshot.hasError){
-                resultado = " Erro ao carregar dados";
+
               }else{
-                double valor = snapshot.data!["BRL"]["buy"];
-                resultado = "Preco do Bitcoin: ${valor.toString()}";
+                return ListView.builder(
+                  itemCount: snapshot.data?.length,
+                  itemBuilder: (context, index){
+                    List<Post>? lista = snapshot.data;
+                    Post post = lista![index];
+
+
+                    return ListTile(
+                      title: Text(post.title),
+                      subtitle: Text(post.id.toString()),
+                    );
+                  }
+                );
               }
-              break;
           }
-          return Center(
-            child: Text( resultado),
-          );
+          return CircularProgressIndicator();
         },
+      ),
     );
   }
 }
+
+
