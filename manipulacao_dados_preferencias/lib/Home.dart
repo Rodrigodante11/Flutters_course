@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:shared_preferences/shared_preferences.dart";
 
 class Home extends StatefulWidget {
   @override
@@ -6,12 +7,36 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  _salvar(){
+  String _textoSalvo = "Nada Salvo!";
+
+
+  _salvar() async {
+    String valorDigitado= _controllerCampo.text;
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("Nome", valorDigitado);  // salvando o dado na preferencia
+
+    print("operacao (salvar): " + valorDigitado);
 
   }
 
-  _recuperar(){
+  _recuperar() async {
 
+    final prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _textoSalvo = prefs.getString("Nome") ?? "sem valor";
+    });
+
+    print("operacao (Recuperar): " + _textoSalvo);
+
+    print("operacao (Remover): " );
+
+  }
+
+  _remover()async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove("Nome");
   }
   TextEditingController _controllerCampo =TextEditingController();
   @override
@@ -25,9 +50,9 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget> [
             Text(
-              "Nada Salvo!",
+                _textoSalvo,
               style:TextStyle(
-                fontSize: 20
+                fontSize: 18
               )
             ),
             TextField(
@@ -44,7 +69,7 @@ class _HomeState extends State<Home> {
                   child: Text(
                     "Salvar",
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.bold
                     ),
@@ -58,7 +83,21 @@ class _HomeState extends State<Home> {
                   child: Text(
                     "Recuperar",
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _remover,
+                  child: Text(
+                    "Remover",
+                    style: TextStyle(
+                        fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.bold
                     ),
