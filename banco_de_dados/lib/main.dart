@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
       print(usuario['id']);
       print(usuario['nome']);
       print(usuario['idade']);
-      print("");
+      print(usuario['id']);
     }
 
   }
