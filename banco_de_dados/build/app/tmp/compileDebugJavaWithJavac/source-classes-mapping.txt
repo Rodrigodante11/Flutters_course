@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+cursoflutter/banco_de_dados/BuildConfig.java
+ cursoflutter.banco_de_dados.BuildConfig
