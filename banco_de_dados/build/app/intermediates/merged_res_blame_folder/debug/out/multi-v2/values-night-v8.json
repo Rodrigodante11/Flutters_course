@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\banco_de_dados\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\Flutters_course\\banco_de_dados\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\banco_de_dados\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\Flutters_course\\banco_de_dados\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

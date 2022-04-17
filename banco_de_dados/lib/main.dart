@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
     Database bd = await _recuperarBancoDados();
     Map<String, dynamic> dadosUsuario = {
       "nome":"Zurich destefanno",
-      "idade": 46
+      "idade": 22
     };
     int id = await bd.insert("usuarios", dadosUsuario);
     print("Id salvo: "+id.toString());
@@ -89,20 +89,21 @@ class _HomeState extends State<Home> {
 
   _excluirBDById(int id) async {
     Database bd = await _recuperarBancoDados();
-    bd.delete(
+    int quantidadedeletada = await bd.delete(
       "usuarios",
       where: "id = ?",
       whereArgs: [id]
 
     );
+    print("item que foram removidos: "+quantidadedeletada.toString());
   }
 
   @override
   Widget build(BuildContext context) {
-    //_salvar();
+    _salvar();
     //_listarBD();
-    _listarBDById(3);
-    //_excluirBDById(3);
+    //_listarBDById(3);
+    _excluirBDById(2);
     return Container();
   }
 }

@@ -12,8 +12,8 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\DELL\Desktop\my_programs\flutter_curse_git\banco_de_dados\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\DELL\Desktop\my_programs\flutter_curse_git\banco_de_dados\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->C:\Users\DELL\Desktop\my_programs\flutter_curse_git\Flutters_course\banco_de_dados\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\Users\DELL\Desktop\my_programs\flutter_curse_git\Flutters_course\banco_de_dados\android\app\src\debug\AndroidManifest.xml:6:22-64
 15
 16    <application
 17        android:name="android.app.Application"
