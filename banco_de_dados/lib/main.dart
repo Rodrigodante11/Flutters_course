@@ -48,14 +48,7 @@ class _HomeState extends State<Home> {
   _listarBD() async {
 
     Database bd = await _recuperarBancoDados();
-    //String sql = "SELECT * FROM usuarios WHERE id = 5 ";
-    //String sql = "SELECT * FROM usuarios WHERE idade >= 30 AND idade <= 58";
-    //String sql = "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 46 ";
-    //String sql = "SELECT * FROM usuarios WHERE idade IN (18,30) ";
-    //String filtro = "an";
-    //String sql = "SELECT * FROM usuarios WHERE nome LIKE '%" + filtro + "%' ";
-    //String sql = "SELECT *, UPPER(nome) as nomeMaiu FROM usuarios WHERE 1=1 ORDER BY UPPER(nome) DESC ";//ASC, DESC
-    String sql = "SELECT *, UPPER(nome) as nomeMaiu FROM usuarios WHERE 1=1 ORDER BY idade DESC LIMIT 3";//ASC, DESC
+    String sql = "SELECT * FROM usuarios ";
     List usuarios = await bd.rawQuery(sql);
 
     for( var usuario in usuarios){
@@ -72,7 +65,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     //_salvar();
-    //_listarBD();
+    _listarBD();
     return Container();
   }
 }
