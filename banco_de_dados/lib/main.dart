@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     //_salvar();
-    _listarBD();
+    //_listarBD();
     return Container();
   }
 }
