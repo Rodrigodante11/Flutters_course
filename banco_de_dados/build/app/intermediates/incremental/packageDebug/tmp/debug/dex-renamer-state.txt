@@ -1,4 +1,4 @@
-#Sun Apr 17 16:42:42 BRT 2022
+#Sun Apr 17 18:22:03 BRT 2022
 base.0=C\:\\Users\\DELL\\Desktop\\my_programs\\flutter_curse_git\\banco_de_dados\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

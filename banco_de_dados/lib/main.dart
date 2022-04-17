@@ -38,19 +38,34 @@ class _HomeState extends State<Home> {
     
     Database bd = await _recuperarBancoDados();
     Map<String, dynamic> dadosUsuario = {
-      "nome":"Rodrigo Augusto",
-      "idade": 22
+      "nome":"Zurich destefanno",
+      "idade": 46
     };
     int id = await bd.insert("usuarios", dadosUsuario);
     print("Id salvo: "+id.toString());
     
   }
+  _listarBD() async {
 
+    Database bd = await _recuperarBancoDados();
+    String sql = "SELECT * FROM usuarios";
+    List usuarios = await bd.rawQuery(sql);
+
+    for( var usuario in usuarios){
+      print(usuario['id']);
+      print(usuario['nome']);
+      print(usuario['idade']);
+      print("");
+    }
+
+  }
 
 
 
   @override
   Widget build(BuildContext context) {
+    //_salvar();
+    _listarBD();
     return Container();
   }
 }
