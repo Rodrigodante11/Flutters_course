@@ -62,17 +62,46 @@ class _HomeState extends State<Home> {
       print(usuario['id']);
       print(usuario['nome']);
       print(usuario['idade']);
-      print(usuario['id']);
+      print("");
     }
 
   }
 
+  _listarBDById(int id) async {
 
+    Database bd = await _recuperarBancoDados();
+
+    List usuarios = await bd.query(
+      "usuarios",
+      columns: ["id", "nome" , "idade"],
+      where: "id = ? ",    // "id = ? AND nome = ?"
+      whereArgs: [id]
+    );
+
+    for( var usuario in usuarios){
+      print(usuario['id']);
+      print(usuario['nome']);
+      print(usuario['idade']);
+      print("");
+    }
+
+  }
+
+  _excluirBDById(int id) async {
+    Database bd = await _recuperarBancoDados();
+    bd.delete(
+      "usuarios",
+      where: "id = ?",
+      whereArgs: [id]
+
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     //_salvar();
-    _listarBD();
+    //_listarBD();
+    _listarBDById(3);
     return Container();
   }
 }
